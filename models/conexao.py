@@ -10,15 +10,6 @@ class Database:
 
     def conectar(self):
         return db.connect("models/database/"+DATABASE)
-    
-    def fechar(self):
-        return self.conn.close()
-    
-    def rollBack(self):
-        return self.rollBack
-    
-    def Commit(self):
-        return self.conn.commit()
 
     #Criar todas as tabelas necessárias
     def criarTabelas(self):
