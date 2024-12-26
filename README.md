@@ -53,7 +53,8 @@ OilCycle/
 ### Executando o Servidor
 1. Execute o servidor FastAPI usando o Uvicorn:
    ```bash
-   uvicorn app.main:app --reload
+   uvicorn app:api --reload
+
    ```
 
 2. Acesse a aplicação em seu navegador:
