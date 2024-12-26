@@ -22,12 +22,12 @@ def nova_serie(ano: int, versao: float, modelo: str):
     obj = SerieController()
     return obj.inserir({'ano':ano, 'versao':versao, 'modelo': modelo})
 
-'''
-@api.post("/novoAparelho/")
-def novoAparelho(dados:AparelhoModel):
-    #classe model aqui. Ex. obj = AparelhoModel()
-    return {'teste_post': 'Teste de um POST novo aparelho'}
+@api.get("/listaSerie")
+def listar_serie():
+    obj = SerieController()
+    return obj.listar()
 
+'''
 
 @api.put("/editarAparelho/{id}/")
 def atualizarAparelho(codigo: str, dados: AparelhoModel):
@@ -37,10 +37,6 @@ def atualizarAparelho(codigo: str, dados: AparelhoModel):
 @api.delete("/excluirAparelho/{id}")
 def desativarAparelho(codigo:str):
     return {'teste_delete': f'Teste de um Delete novo aparelho: {id}'}
-
-@api.get("/aparelhos/")
-def listarAparelhos():
-    return {'teste_aparelhos': f'Mostrar todos os aparelhos'}
 
 @api.get("/aparelho/{id}/")
 def buscarAparelho(id: AparelhoModel):
