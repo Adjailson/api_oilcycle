@@ -5,13 +5,13 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
-from models.maquina_model import AparelhoModel
+from models.maquina_model import MaquinaModel
 from controllers.serie_controller import SerieController
 
 api = FastAPI(
     title="API - OilCycle FACEPE",
     version="0.0.2",
-    description="RESP API OilCycle - Projeto de um aparelho Eletrodomêstico para processar óleo de cozinha.",
+    description="RESP API OilCycle - Projeto de um aparelho Eletrodoméstico para processar óleo de cozinha.",
 )
 
 #Lembre-se que a API vai tá no endereço: http://127.0.0.1:8000/docs 
