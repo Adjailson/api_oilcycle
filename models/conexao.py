@@ -23,8 +23,20 @@ class Database:
             )
         ''')
         
-        #Outras tabelas:
-
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS maquina (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                modelo VARCHAR(10) NOT NULL,
+                on_off INTEGER(1) NOT NULL,
+                nivel_oleo: INTEGER(3) NOT NULL,
+                temperatura_oleo INTEGER(3) NOT NULL,
+                nivel_agua: INTEGER(3) NOT NULL,
+                nivel_detegente: INTEGER(3) NOT NULL,
+                contem_soda: INTEGER(1) NOT NULL,
+                status_motor: INTEGER(1) NOT NULL,
+                temporizador: INTEGER(3) NOT NULL
+            )
+        ''')
         # Ao terminar:
         self.conn.commit()
         self.conn.close()

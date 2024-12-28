@@ -5,7 +5,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
-from models.aparelho_model import AparelhoModel
+from models.maquina_model import AparelhoModel
 from controllers.serie_controller import SerieController
 
 api = FastAPI(
