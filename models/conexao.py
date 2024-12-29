@@ -6,7 +6,7 @@ class Database:
 
     def __init__(self):
         self.conn = db.connect("models/database/"+DATABASE)
-        #self.criarTabelas()#Depois do banco criado podemos comentar essa linha
+        self.criarTabelas()#Depois do banco criado podemos comentar essa linha
 
     def conectar(self):
         return db.connect("models/database/"+DATABASE)
@@ -39,4 +39,3 @@ class Database:
         ''')
         # Ao terminar:
         self.conn.commit()
-        self.conn.close()

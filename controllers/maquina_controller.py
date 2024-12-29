@@ -30,8 +30,8 @@ class MaquinaController(Database):
         id = id
         try:
             cursor.execute('''
-            UPDATE maquina SET modelo=?, on_off=?, nivel_oleo=?, temperatura_oleo=?, nivel_agua=?, nivel_detegente=?, contem_soda=?, status_motor=?, temporizador=? WHERE id = ?
-            ''', (dados['modelo'], dados['on_off'], dados['nivel_oleo'], dados['temperatura_oleo'], dados['nivel_agua'], dados['nivel_detegente'], dados['contem_soda'], dados['status_motor'], dados['temporizador'], id))
+            UPDATE maquina SET on_off=?, nivel_oleo=?, temperatura_oleo=?, nivel_agua=?, nivel_detegente=?, contem_soda=?, status_motor=?, temporizador=? WHERE id = ?
+            ''', (dados['on_off'], dados['nivel_oleo'], dados['temperatura_oleo'], dados['nivel_agua'], dados['nivel_detegente'], dados['contem_soda'], dados['status_motor'], dados['temporizador'], id))
             conn.commit()
         except Exception as e:
             conn.rollback()
@@ -47,6 +47,23 @@ class MaquinaController(Database):
         lista = []
         try:
             cursor.execute('SELECT * FROM maquina')
+            linhas = cursor.fetchall()
+            lista = [{'id':e[0], 'modelo':e[1], 'on_off':e[2], 'nivel_oleo':e[3], 'temperatura_oleo':e[4], 'nivel_agua':e[5], 'nivel_detegente':e[6], 'contem_soda':e[7], 'status_motor':e[8], 'temporizador':e[9]} for e in linhas]
+            
+        except Exception as e:
+            conn.rollback()
+            return {'msg': f"Erro: {e}"}
+        finally:
+            cursor.close()
+            conn.close()
+        return lista
+    
+    def statusMaquina(self, modelo):
+        conn = self.conectar()
+        cursor = conn.cursor()
+        lista = []
+        try:
+            cursor.execute('SELECT * FROM maquina WHERE modelo = ?',(modelo,))
             linhas = cursor.fetchall()
             lista = [{'id':e[0], 'modelo':e[1], 'on_off':e[2], 'nivel_oleo':e[3], 'temperatura_oleo':e[4], 'nivel_agua':e[5], 'nivel_detegente':e[6], 'contem_soda':e[7], 'status_motor':e[8], 'temporizador':e[9]} for e in linhas]
             

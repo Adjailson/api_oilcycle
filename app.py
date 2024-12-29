@@ -7,7 +7,7 @@ import uvicorn
 
 from models.maquina_model import MaquinaModel
 from controllers.serie_controller import SerieController
-
+from controllers.maquina_controller import MaquinaController
 api = FastAPI(
     title="API - OilCycle FACEPE",
     version="0.0.2",
@@ -16,7 +16,28 @@ api = FastAPI(
 
 #Lembre-se que a API vai tá no endereço: http://127.0.0.1:8000/docs 
 #Métodos ou ENDPOINT da RESP API
+'''====================MÁQUINA==================='''
+@api.post("/novaMaquina") # Define o endpoint
+def nova_maquina(modelo:str, on_off:int, nivel_oleo:int, temperatura_oleo:int, nivel_agua:int, nivel_detegente:int, contem_soda:int, status_motor:int, temporizador:int):
+    obj = MaquinaController()
+    return obj.inserir({'modelo':modelo, 'on_off':on_off, 'nivel_oleo':nivel_oleo, 'temperatura_oleo':temperatura_oleo, 'nivel_agua':nivel_agua, 'nivel_detegente':nivel_detegente, 'contem_soda':contem_soda, 'status_motor':status_motor, 'temporizador':temporizador})
 
+@api.put("/atualizarMaquina/{id}")
+def atualizar_maquina(id: int,on_off:int, nivel_oleo:int, temperatura_oleo:int, nivel_agua:int, nivel_detegente:int, contem_soda:int, status_motor:int, temporizador:int):
+    obj = MaquinaController()
+    return obj.atualizar(id,{'on_off':on_off, 'nivel_oleo':nivel_oleo, 'temperatura_oleo':temperatura_oleo, 'nivel_agua':nivel_agua, 'nivel_detegente':nivel_detegente, 'contem_soda':contem_soda, 'status_motor':status_motor, 'temporizador':temporizador})
+
+@api.get("/listaMaquinas")
+def listar_maquinas():
+    obj = MaquinaController()
+    return obj.listar()
+
+@api.get("/statusMaquina/{id}")
+def status_maquina(modelo:str):
+    obj = MaquinaController()
+    return obj.statusMaquina(modelo)
+
+'''==================NUMERO DE SERIE===================='''
 @api.post("/novaSerie")# Define o endpoint
 def nova_serie(ano: int, versao: float, modelo: str):
     obj = SerieController()
