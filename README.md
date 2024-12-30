@@ -62,6 +62,9 @@ OilCycle/
    - Documentação Swagger: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
    - Documentação Redoc: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
 
+3. Link do servidor real pelo Render:
+   - [https://api-oilcycle.onrender.com]
+
 ## Próximos Passos
 - Integrar rotas específicas para controle do dispositivo OilCycle.
 - Desenvolver modelos para dados de sensores e estados do dispositivo.
