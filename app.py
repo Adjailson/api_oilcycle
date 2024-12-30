@@ -32,7 +32,7 @@ def listar_maquinas():
     obj = MaquinaController()
     return obj.listar()
 
-@api.get("/statusMaquina/{id}")
+@api.get("/statusMaquina/{modelo}")
 def status_maquina(modelo:str):
     obj = MaquinaController()
     return obj.statusMaquina(modelo)
